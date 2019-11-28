@@ -1,0 +1,46 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{% url 'home' %}">DesignMarket</a>
+              <a id="menu"><i class="fa fa-bars"></i></a>
+            </div>
+            
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'requestview' %}">Request</a></li>
+              <li><a href="{% url 'designs' %}">Design gallery</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{% url 'login' %}?next={{ next }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><a href="{% url 'register' %}?next={{ next }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>
+    <main>
+      <div class="maindiv">
+        {% block content %}
+        {% endblock %}
+        </div>
+    </main>
+    <footer>
+        
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+</body>

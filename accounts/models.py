@@ -1,0 +1,32 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+# Create your models here.
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(
+                choices= [
+                ('Designer', 'I want to design'),
+                ('User', 'I want to buy designs'),
+                ],
+                max_length=20,
+            )
+        
+    def __str__(self):
+        return self.user.username
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
