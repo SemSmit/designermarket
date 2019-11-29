@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block content %}
+    <h1>this is myrequests.html</h1>
+    {% for x in myrequests %}
+        {{ request.request_title }}
+        {{ price }}
+        {{ request }}
+    {% endfor %}
+{% endblock %}

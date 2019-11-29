@@ -3,17 +3,31 @@ from django.contrib import messages, auth
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from accounts.models import UserProfile
+from .forms import RequestForm
 
 
 # Create your views here.
 @login_required
 def requestview(request):
-    current_user = request.user
-    if current_user.userprofile.role == "Designer":
-        return render(request, "designs.html")
-    elif current_user.userprofile.role == "User":
-        return render(request, "home.html")
-    else: 
-        """A view that displays the request page"""
-        return render(request, "request.html")
+    request_form = RequestForm(request.POST)
+    if request.method == 'POST':
+        if request_form.is_valid():
+            x = request_form.save(commit=False)
+            x.buyer = request.user
+            x.save()
+            return render(request, "myrequests.html")
+        else:
+            return render(request, "home.html")
+    else:
+        current_user = request.user
+        if current_user.userprofile.role == "Designer":
+            return render(request, "designs.html")
+        elif current_user.userprofile.role == "User":
+            
+                
+            args = {'request_form': request_form,}
+            return render(request, "request.html", args)
+        else: 
+            """A view that displays the request page"""
+            return render(request, "request.html")
         

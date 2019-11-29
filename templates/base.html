@@ -25,8 +25,13 @@
               <li><a href="{% url 'designs' %}">Design gallery</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              {% if not user.is_authenticated %}
               <li><a href="{% url 'login' %}?next={{ next }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               <li><a href="{% url 'register' %}?next={{ next }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              {% else %}
+              <li><a href="{% url 'logout' %}?next={{ next }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li><a href="{% url 'myrequests' %}"><span class="glyphicon glyphicon-th-list"></span> My requests</a></li>
+              {% endif %}
             </ul>
           </div>
         </nav>

@@ -19,7 +19,7 @@ from home import urls as urls_home
 from designs import urls as urls_designs
 from request import urls as urls_request
 from accounts import urls as urls_accounts
-
+from myrequests import urls as urls_myrequests
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^request/$', include(urls_request)),
     url(r'^designs/$', include(urls_designs)),
     url(r'^accounts/', include(urls_accounts)),
+    url(r'^my_requests/$', include(urls_myrequests)),
 ]
