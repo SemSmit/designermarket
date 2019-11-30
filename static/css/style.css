@@ -108,12 +108,16 @@ header{
 .req_date_requested{
     font-family: monospace;
 }
-.req_wireframe{
-    height: 300px;
-    width: 200px;
+
+.req_wireframe {
+    height: 200px;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    border-top: 1px white solid;
+    border-bottom: 1px white solid;
+    margin: 3rem 0;
 }
 
 .splitwrapper{

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import UserProfile
 from .forms import RequestForm
 from myrequests.views import myrequests
+from .models import RequestModel
 
 # Create your views here.
 @login_required
@@ -21,10 +22,14 @@ def requestview(request):
     else:
         current_user = request.user
         if current_user.userprofile.role == "Designer":
-            return render(request, "designs.html")
+            """
+            A view that gets all requests from this user and sends them
+            to myrequests.html
+            """
+            all_requests = RequestModel.objects.all
+            args = {'all_requests': all_requests}
+            return render(request, "request.html", args)
         elif current_user.userprofile.role == "User":
-            
-                
             args = {'request_form': request_form,}
             return render(request, "request.html", args)
         else: 

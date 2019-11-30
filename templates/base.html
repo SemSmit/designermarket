@@ -22,7 +22,10 @@
             
             <ul class="nav navbar-nav">
               <li><a href="{% url 'home' %}">Home</a></li>
-              <li><a href="{% url 'requestview' %}">Request</a></li>
+              <li><a href="{% url 'requestview' %}">
+                {% if request.user.userprofile.role == "User" %}Request
+                {% elif request.user.userprofile.role == "Designer" %}See requests
+                {% else %}Requests{% endif %}</a></li>
               <li><a href="{% url 'designs' %}">Design gallery</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

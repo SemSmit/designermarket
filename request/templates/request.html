@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block content %}
+    {% if request.user.userprofile.role == "Designer" %}
+        <h1>All requests</h1>
+        {% for x in all_requests %}
+        <!--<a href="{% url 'go_to_request' pk=x.pk %}">-->
+            <div class="my_requests_block">
+                <div class="top-req-wrapper">
+                    <h3 class="req_title">{{ x.request_title.title }}</h3>
+                    {% if x.wireframe %}
+                    <div class="req_wireframe" style="background-image: url({{ x.wireframe }})"></div>
+                    {% endif %}
+                    <p class="req_request">{{ x.snippet }}</p>
+                    <div class="req_date_requested">{{ x.date_requested }}</div>
+                </div>
+                <div class="splitwrapper">
+                    <div class="div-graphic_type split"><div class="req_graphic_type">{{ x.graphic_type }}</div></div>
+                    <div class="div-price split"><div class="req_price">${{ x.price }}</div></div>
+                    <div class="div-deadline split"><div class="req_deadline">{{ x.deadline }}</div></div>
+                </div>
+            </div>
+        <!--</a>-->
+        {% endfor %}
+    {% else %}
     <h1 class="margin-bottom">Request designers</h1>
     <form method="post" action="{% url 'requestview' %}">
         <fieldset class="form-group">
@@ -9,4 +31,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </fieldset>
     </form>
+    {% endif %}
 {% endblock %}
