@@ -1,34 +1,16 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block content %}
-    <h1>Current</h1>
-    <div class="requestblocks">
-    {% for x in myrequests %}
-    <a href="{% url 'go_to_request' pk=x.pk %}">
-        <div class="my_requests_block">
-            <div class="top-req-wrapper">
-                <h3 class="req_title">Requested by: {{ x.owner_request.user }}</h3>
-                <h3 class="req_title">Designed by: {{ x.designer }}</h3>
-                {% if x.wireframe %}
-                <div class="req_wireframe" style="background-image: url({{ MEDIA_URL }}{{ x.wireframe }})"></div>
-                {% endif %}
-                <p class="req_request">{{ x.snippet }}</p>
-                <div class="req_date_requested">{{ x.date_requested }}</div>
+    <h1>Offer for {{ currentoffer.owner_request }}.</h1>
+    
+            <div>
+                <h3>Requested by: {{ currentoffer.owner_request_buyer }}</h3>
+                <h3>Designed by: {{ currentoffer.designer }}</h3>
+                <div style="background-image: url({{ MEDIA_URL }}{{ currentoffer.final_product }})"></div>
+                <div>{{ currentoffer.request_owner_date_requested }}</div>
+                <div>{{ currentoffer.date_send }}</div>
+                <div>{{ currentoffer.graphic_type }}</div>
+                <div>$ {{ currentoffer.price }}</div>
+                <div>{{ currentoffer.date_send }}</div>
             </div>
-            <div class="splitwrapper">
-                <div class="div-graphic_type split"><div class="req_graphic_type">{{ x.graphic_type }}<div class="detail">Type:</div></div></div>
-                <div class="div-price split"><div class="req_price">$ {{ x.price }}<div class="detail">Price:</div></div></div>
-                <div class="div-deadline split"><div class="req_deadline">{{ x.deadline }}<div class="detail">Deadline:</div></div></div>
-            </div>
-        </div>
-    </a>
-    {% endfor %}
-    </div>
 {% endblock %}
-
-    owner_request =
-    notes = 
-    final_product = 
-    designer = 
-    date_send = 
-    status = 

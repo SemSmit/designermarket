@@ -23,9 +23,11 @@ def myoffers(request):
     to myoffers.html
     """
     my_offers = Quote.objects.all().filter(designer=request.user)
-    return render(request, "myoffers.html", {'my_offers': my_offers})
+    my_offers_get = Quote.objects.all().filter(owner_request__buyer_id=request.user)
+    return render(request, "myoffers.html", {'my_offers': my_offers, 'my_offers_get': my_offers_get,})
 
 def go_to_offer(request, pk):
-    currentoffer = Quote.objects.get(pk=pk)
+    
+    currentoffer = Quote.objects.get(owner_request_id=pk)
     args = {'currentoffer': currentoffer,}
     return render(request, "currentoffer.html", args)
