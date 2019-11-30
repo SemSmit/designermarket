@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block content %}
+    <h1>My offers</h1>
+    <div class="requestblocks">
+    {% for x in my_offers %}
+    <a href="{% url 'go_to_offer' pk=x.pk %}">
+        <div class="my_requests_block">
+            <div class="top-req-wrapper">
+                <h3 class="req_title">Offer for: {{ x.owner_request }}</h3>
+                <h4 class="">Requested by: {{ x.owner_request.buyer }}</h4>
+                <h4 class="">Designed by: {{ x.designer }}</h4>
+                <div class="req_wireframe" style="background-image: url({{ MEDIA_URL }}{{ x.final_product }})"></div>
+                <p class="req_request">{{ x.owner_request.request }}</p>
+                <div class="req_date_requested">{{ x.owner_request.date_requested }}</div>
+            </div>
+            <div class="splitwrapper">
+                <div class="div-graphic_type split"><div class="req_graphic_type">{{ x.owner_request.graphic_type }}<div class="detail">Type:</div></div></div>
+                <div class="div-price split"><div class="req_price">$ {{ x.owner_request.price }}<div class="detail">Price:</div></div></div>
+                <div class="div-deadline split"><div class="req_deadline">{{ x.date_send }}<div class="detail">Delivered:</div></div></div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+    </div>
+{% endblock %}
+

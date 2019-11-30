@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block content %}
-    <h1>My requests</h1>
+    <h1>Current</h1>
     <div class="requestblocks">
     {% for x in myrequests %}
     <a href="{% url 'go_to_request' pk=x.pk %}">
         <div class="my_requests_block">
             <div class="top-req-wrapper">
-                <h3 class="req_title">{{ x.request_title.title }}</h3>
-                <div class="req_wireframe" style="background-image: url({% if x.wireframe %}{{ MEDIA_URL }}{{ x.wireframe }}{% else %}https://designmarket.s3.eu-central-1.amazonaws.com/media/nowires.png{% endif %})"></div>
+                <h3 class="req_title">Requested by: {{ x.owner_request.user }}</h3>
+                <h3 class="req_title">Designed by: {{ x.designer }}</h3>
+                {% if x.wireframe %}
+                <div class="req_wireframe" style="background-image: url({{ MEDIA_URL }}{{ x.wireframe }})"></div>
+                {% endif %}
                 <p class="req_request">{{ x.snippet }}</p>
                 <div class="req_date_requested">{{ x.date_requested }}</div>
             </div>
@@ -23,3 +26,9 @@
     </div>
 {% endblock %}
 
+    owner_request =
+    notes = 
+    final_product = 
+    designer = 
+    date_send = 
+    status = 

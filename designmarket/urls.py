@@ -26,7 +26,7 @@ from .settings import MEDIA_URL
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', include(urls_home)),
-    url(r'^request/$', include(urls_request)),
+    url(r'^request/', include(urls_request)),
     url(r'^designs/$', include(urls_designs)),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^my_requests/', include(urls_myrequests)),

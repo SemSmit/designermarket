@@ -3,29 +3,33 @@
 {% block content %}
     {% if request.user.userprofile.role == "Designer" %}
         <h1>All requests</h1>
+        {% if all_requests %}
+        <div class="requestblocks">
         {% for x in all_requests %}
-        <!--<a href="{% url 'go_to_request' pk=x.pk %}">-->
+        <a href="{% url 'make_offer' pk=x.pk %}">
             <div class="my_requests_block">
                 <div class="top-req-wrapper">
                     <h3 class="req_title">{{ x.request_title.title }}</h3>
-                    {% if x.wireframe %}
-                    <div class="req_wireframe" style="background-image: url({{ x.wireframe }})"></div>
-                    {% endif %}
+                    <div class="req_wireframe" style="background-image: url({% if x.wireframe %}{{ MEDIA_URL }}{{ x.wireframe }}{% else %}https://designmarket.s3.eu-central-1.amazonaws.com/media/nowires.png{% endif %})"></div>
                     <p class="req_request">{{ x.snippet }}</p>
                     <div class="req_date_requested">{{ x.date_requested }}</div>
                 </div>
                 <div class="splitwrapper">
-                    <div class="div-graphic_type split"><div class="req_graphic_type">{{ x.graphic_type }}</div></div>
-                    <div class="div-price split"><div class="req_price">${{ x.price }}</div></div>
-                    <div class="div-deadline split"><div class="req_deadline">{{ x.deadline }}</div></div>
+                    <div class="div-graphic_type split"><div class="req_graphic_type">{{ x.graphic_type }}<div class="detail">Type:</div></div></div>
+                    <div class="div-price split"><div class="req_price">$ {{ x.price }}<div class="detail">Price:</div></div></div>
+                    <div class="div-deadline split"><div class="req_deadline">{{ x.deadline }}<div class="detail">Deadline:</div></div></div>
                 </div>
             </div>
-        <!--</a>-->
+        </a>
         {% endfor %}
+    </div>
+    {% else %}
+    <h3>Unfortunately there are no requests at the moment.</h3>
+    {% endif %}
     {% else %}
     <h1 class="margin-bottom">Request designers</h1>
-    <form method="post" action="{% url 'requestview' %}">
-        <fieldset class="form-group">
+    <form method="post" action="{% url 'requestview' %}" enctype="multipart/form-data">
+        <fieldset class="form-group requestform">
             {% csrf_token %}
             {{ request_form | as_bootstrap }}
             <button type="submit" class="btn btn-primary">Submit</button>

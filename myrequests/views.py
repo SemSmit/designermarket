@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from request.models import RequestModel
+from request.models import RequestModel, Quote
 
 # Create your views here.
     
@@ -17,11 +17,15 @@ def go_to_request(request, pk):
     return render(request, "currentrequest.html", args)
 
 
+def myoffers(request):
+    """
+    A view that gets all offers from this user and sends them
+    to myoffers.html
+    """
+    my_offers = Quote.objects.all().filter(designer=request.user)
+    return render(request, "myoffers.html", {'my_offers': my_offers})
 
-# class UserAnnouncesList(ListView):
-#     model = Announce
-#     template_name = 'myApp/user_announces_list.html'
-#     context_object_name = 'all_announces_by_user'
-
-#     def get_queryset(self):
-#         return Announce.objects.filter(owner=self.kwargs['pk'])
+def go_to_offer(request, pk):
+    currentoffer = Quote.objects.get(pk=pk)
+    args = {'currentoffer': currentoffer,}
+    return render(request, "currentoffer.html", args)

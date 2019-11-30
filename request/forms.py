@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import RequestModel
+from .models import RequestModel, Quote
 
 
 class DateInput(forms.DateInput):
@@ -13,3 +13,9 @@ class RequestForm(ModelForm):
         widgets = {
             'deadline': DateInput()
         }
+
+
+class QuoteForm(ModelForm):
+    class Meta:
+        model = Quote
+        fields = ['notes', 'final_product']

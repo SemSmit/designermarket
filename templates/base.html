@@ -33,7 +33,10 @@
               <li><a href="{% url 'login' %}?next={{ next }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               <li><a href="{% url 'register' %}?next={{ next }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               {% else %}
+              <li><a href="{% url 'myoffers' %}"><span class="glyphicon glyphicon-th-list"></span> My offers</a></li>
+              {% if request.user.userprofile.role == "User" %}
               <li><a href="{% url 'myrequests' %}"><span class="glyphicon glyphicon-th-list"></span> My requests</a></li>
+              {% endif %}
               <li><a href="{% url 'logout' %}?next={{ next }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               {% endif %}
             </ul>
