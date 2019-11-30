@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block content %}
-    <h1>this is request.html</h1>
+    <h1 class="margin-bottom">Request designers</h1>
     <form method="post" action="{% url 'requestview' %}">
         <fieldset class="form-group">
-            <legend>Why are you using this site?</legend>
             {% csrf_token %}
             {{ request_form | as_bootstrap }}
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^request/$', include(urls_request)),
     url(r'^designs/$', include(urls_designs)),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^my_requests/$', include(urls_myrequests)),
+    url(r'^my_requests/', include(urls_myrequests)),
 ]

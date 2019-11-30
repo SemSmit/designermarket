@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if currentrequest.buyer == request.user %}
+        <div class="currentrequest_block">
+            <h3>{{ currentrequest.request_title }}</h3>
+            <span>Price: {{ currentrequest.price }}</span>
+            <p>{{ snippet }}</p>
+            <p>{{ currentrequest.graphic_type }}</p>
+            <p>{{ currentrequest.deadline }}</p>
+            <p>{{ currentrequest.date_requested }}</p>
+            <p>{{ currentrequest.wireframe }}</p>
+        </div>
+    {% else %}
+        <h2>This is not your request.</h2>
+    {% endif %}
+{% endblock %}
+

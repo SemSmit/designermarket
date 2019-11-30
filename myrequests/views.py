@@ -11,7 +11,10 @@ def myrequests(request):
     myrequests = RequestModel.objects.all().filter(buyer_id=request.user)
     return render(request, "myrequests.html", {'myrequests': myrequests})
 
-
+def go_to_request(request, pk):
+    currentrequest = RequestModel.objects.get(pk=pk)
+    args = {'currentrequest': currentrequest,}
+    return render(request, "currentrequest.html", args)
 
 
 

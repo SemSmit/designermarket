@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Solway:300,400,500,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -29,8 +30,8 @@
               <li><a href="{% url 'login' %}?next={{ next }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               <li><a href="{% url 'register' %}?next={{ next }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               {% else %}
-              <li><a href="{% url 'logout' %}?next={{ next }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               <li><a href="{% url 'myrequests' %}"><span class="glyphicon glyphicon-th-list"></span> My requests</a></li>
+              <li><a href="{% url 'logout' %}?next={{ next }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               {% endif %}
             </ul>
           </div>

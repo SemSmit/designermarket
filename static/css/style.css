@@ -48,6 +48,115 @@ header{
     background-color: #367672;
 }
 
+/*____________________________________________________________-HOME*/
+
+.maindiv > h1{
+    text-align: center;
+    font-family: 'Solway', serif;
+    color: #2c3e50;
+}
+
+.under_title{
+    text-align: center;
+    font-size: 18px;
+    margin: 2rem 1rem;
+}
+.perks{
+    text-align: center;
+    background-color: #2c3e5099;
+    box-shadow: 2px 2px 6px grey;
+    font-size: 18px;
+    padding: 3rem 2rem;
+    margin: 2rem 1rem;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Solway', sans-serif;
+}
+.perks:nth-of-type(2){
+    background-color: #298d8b;
+}
+.perks:nth-of-type(3){
+    background-color: #32a6a4;
+}
+
+/*____________________________________________________________-MyRequests*/
+.my_requests_block{
+    background-color: #529079;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 2px 2px 6px 0px #000000a3;
+    margin: 4.5rem 0rem;
+    overflow: hidden;
+}
+
+.top-req-wrapper{
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.req_title{
+    font-family: 'Solway', sans-serif;
+    text-align: left;
+    text-decoration: underline;
+}
+.req_graphic_type{
+    font-family: monospace;
+}
+.req_deadline{
+    font-family: monospace;
+}
+.req_date_requested{
+    font-family: monospace;
+}
+.req_wireframe{
+    height: 300px;
+    width: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.splitwrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    border-top: 2px solid darkgreen;
+}
+
+.split{
+    display: table;
+    flex-basis: calc(100% / 3);
+    margin: 0;
+    text-align: center;
+    background-color: #918e6b;
+}
+.split:nth-of-type(2){
+    border-right: 2px solid darkgreen;
+    border-left: 2px solid darkgreen;
+    background-color: #a89e5c;
+}
+
+.split:nth-of-type(3){
+    background-color: #8d6c21b3;
+}
+
+.split>div{
+    display: table-cell;
+    vertical-align: middle;
+    height: 70px;
+}
+
+/*____________________________________________________________-Requests*/
+.margin-bottom{
+    margin-bottom: 2rem
+}
+
+.form-group {
+    margin: 15px 0.7rem;
+}
+
+
+
 @media (max-width: 768px){
     .navbar-header {
         float: none;

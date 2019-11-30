@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from accounts.models import UserProfile
 from .forms import RequestForm
-
+from myrequests.views import myrequests
 
 # Create your views here.
 @login_required
@@ -15,7 +15,7 @@ def requestview(request):
             x = request_form.save(commit=False)
             x.buyer = request.user
             x.save()
-            return render(request, "myrequests.html")
+            return myrequests(request)
         else:
             return render(request, "home.html")
     else:
