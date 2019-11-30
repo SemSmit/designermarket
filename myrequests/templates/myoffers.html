@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
+{% block title %}My offers{% endblock %}
 {% block content %}
     <h1>My offers</h1>
     <div class="requestblocks">
@@ -23,6 +24,8 @@
         </div>
     </a>
     {% endfor %}
+    
+    
     {% elif my_offers %}
     {% for x in my_offers %}
     <a href="{% url 'go_to_offer' pk=x.owner_request_id %}">

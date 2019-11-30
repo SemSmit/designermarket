@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
+{% block title %}Current offer{% endblock %}
 {% block content %}
-    <h1>Offer for {{ currentoffer.owner_request }}.</h1>
+    <h1>Offer for {{ currentoffer.owner_request }}</h1>
     
-            <div>
-                <h3>Requested by: {{ currentoffer.owner_request_buyer }}</h3>
-                <h3>Designed by: {{ currentoffer.designer }}</h3>
+            <div class="currentoffer-block">
+                <h2 class="users">Requested by: {{ currentoffer.owner_request.buyer }}</h2>
+                <h2 class="users">Designed by: {{ currentoffer.designer }}</h2>
                 <div style="background-image: url({{ MEDIA_URL }}{{ currentoffer.final_product }})"></div>
-                <div>{{ currentoffer.request_owner_date_requested }}</div>
-                <div>{{ currentoffer.date_send }}</div>
-                <div>{{ currentoffer.graphic_type }}</div>
-                <div>$ {{ currentoffer.price }}</div>
-                <div>{{ currentoffer.date_send }}</div>
+                <div><span>Date requested: </span><span>{{ currentoffer.owner_request.date_requested }}</span></div>
+                <div><span>Date delivered: </span><span>{{ currentoffer.date_send }}</span></div>
+                <div><span>Graphic type:</span> {{ currentoffer.owner_request.graphic_type }}</div>
+                <div>Price: $ {{ currentoffer.owner_request.price }}</div>
+                
+                <a href="{% url 'checkout' %}"><button type="button" class="btn btn-success">Pay ${{ currentoffer.owner_request.price }}</button></a>
             </div>
 {% endblock %}
